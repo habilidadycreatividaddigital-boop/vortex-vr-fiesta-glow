@@ -11,6 +11,7 @@ import felizDia from "@/assets/feliz-dia.png";
 import ParticleField from "@/components/ParticleField";
 import SparkleField from "@/components/Sparkles";
 import Gallery from "@/components/Gallery";
+import ReservationForm from "@/components/ReservationForm";
 
 const WHATSAPP = "https://wa.me/526441345735?text=Hola%20Vortex%2C%20quiero%20reservar%20una%20fiesta";
 
