@@ -318,6 +318,8 @@ const Index = () => {
         </div>
       </section>
 
+      <ReservationForm />
+
       {/* FINAL CTA */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto">
