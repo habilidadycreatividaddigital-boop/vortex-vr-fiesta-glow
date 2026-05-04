@@ -9,7 +9,7 @@ import vrImg from "@/assets/vr-experience.jpg";
 import vortexBg from "@/assets/vortex-bg.jpg";
 import felizDia from "@/assets/feliz-dia.png";
 import ParticleField from "@/components/ParticleField";
-import Sparkles from "@/components/Sparkles";
+import SparkleField from "@/components/Sparkles";
 import Gallery from "@/components/Gallery";
 
 const WHATSAPP = "https://wa.me/526441345735?text=Hola%20Vortex%2C%20quiero%20reservar%20una%20fiesta";
@@ -66,7 +66,7 @@ const testimonials = [
 const Index = () => {
   return (
     <div className="min-h-screen vortex-bg text-foreground overflow-x-hidden relative">
-      <Sparkles count={70} />
+      <SparkleField count={70} />
       <ParticleField />
 
       {/* HERO */}
