@@ -9,6 +9,8 @@ import vrImg from "@/assets/vr-experience.jpg";
 import vortexBg from "@/assets/vortex-bg.jpg";
 import felizDia from "@/assets/feliz-dia.png";
 import ParticleField from "@/components/ParticleField";
+import SparkleField from "@/components/Sparkles";
+import Gallery from "@/components/Gallery";
 
 const WHATSAPP = "https://wa.me/526441345735?text=Hola%20Vortex%2C%20quiero%20reservar%20una%20fiesta";
 
@@ -64,6 +66,7 @@ const testimonials = [
 const Index = () => {
   return (
     <div className="min-h-screen vortex-bg text-foreground overflow-x-hidden relative">
+      <SparkleField count={70} />
       <ParticleField />
 
       {/* HERO */}
@@ -91,7 +94,7 @@ const Index = () => {
             ⚡ CIUDAD OBREGÓN, SONORA
           </span>
           <h1 className="font-display font-black text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 neon-text animate-fade-up">
-            La mejor <span className="text-gradient-neon">fiesta gamer</span>
+            La mejor <span className="text-gradient-neon">fiesta</span>
             <br />en Ciudad Obregón
           </h1>
           <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: '0.2s' }}>
@@ -235,6 +238,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Gallery />
 
       {/* TESTIMONIALS */}
       <section className="relative py-24 px-4">
