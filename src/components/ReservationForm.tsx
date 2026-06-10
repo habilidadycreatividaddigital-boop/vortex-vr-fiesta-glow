@@ -128,6 +128,30 @@ const ReservationForm = () => {
               />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="phone">Teléfono</Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={form.phone}
+                onChange={(e) => update("phone", e.target.value)}
+                placeholder="Ej. 644 123 4567"
+                maxLength={20}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Correo electrónico</Label>
+              <Input
+                id="email"
+                type="email"
+                value={form.email}
+                onChange={(e) => update("email", e.target.value)}
+                placeholder="ejemplo@correo.com"
+                maxLength={120}
+                required
+              />
+            </div>
+            <div className="space-y-2">
               <Label>Paquete</Label>
               <Select value={form.pkg} onValueChange={(v) => update("pkg", v)}>
                 <SelectTrigger>
