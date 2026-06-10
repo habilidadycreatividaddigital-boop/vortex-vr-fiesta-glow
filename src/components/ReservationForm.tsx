@@ -14,7 +14,9 @@ const schema = z.object({
   childName: z.string().trim().min(1, "Ingresa el nombre del niño/a").max(80),
   age: z.coerce.number().int().min(1, "Edad inválida").max(18, "Edad inválida"),
   date: z.string().min(1, "Selecciona una fecha"),
-  pkg: z.enum(["Paquete A", "Paquete B", "Paquete C", "No estoy seguro"]),
+  pkg: z.enum(["Paquete Recluta", "Paquete Épico", "Paquete Legendario", "No estoy seguro"]),
+  phone: z.string().trim().min(7, "Teléfono inválido").max(20, "Teléfono demasiado largo"),
+  email: z.string().trim().email("Correo inválido").max(120),
   guests: z.coerce.number().int().min(1).max(200).optional(),
   notes: z.string().trim().max(300).optional(),
 });
@@ -26,7 +28,9 @@ const ReservationForm = () => {
     childName: "",
     age: "" as string | number,
     date: "",
-    pkg: "Paquete B",
+    pkg: "Paquete Épico",
+    phone: "",
+    email: "",
     guests: "" as string | number,
     notes: "",
   });
@@ -49,6 +53,8 @@ const ReservationForm = () => {
       `🎂 Niño/a: ${d.childName} (${d.age} años)\n` +
       `📅 Fecha preferida: ${d.date}\n` +
       `🎁 Paquete: ${d.pkg}\n` +
+      `📞 Teléfono: ${d.phone}\n` +
+      `✉️ Correo: ${d.email}\n` +
       (d.guests ? `👥 Invitados aprox.: ${d.guests}\n` : "") +
       (d.notes ? `📝 Notas: ${d.notes}\n` : "") +
       `\n¿Me ayudan con disponibilidad? ¡Gracias!`;
@@ -122,15 +128,39 @@ const ReservationForm = () => {
               />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="phone">Teléfono</Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={form.phone}
+                onChange={(e) => update("phone", e.target.value)}
+                placeholder="Ej. 644 123 4567"
+                maxLength={20}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Correo electrónico</Label>
+              <Input
+                id="email"
+                type="email"
+                value={form.email}
+                onChange={(e) => update("email", e.target.value)}
+                placeholder="ejemplo@correo.com"
+                maxLength={120}
+                required
+              />
+            </div>
+            <div className="space-y-2">
               <Label>Paquete</Label>
               <Select value={form.pkg} onValueChange={(v) => update("pkg", v)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Paquete A">Paquete A — Completo</SelectItem>
-                  <SelectItem value="Paquete B">Paquete B — Más Popular</SelectItem>
-                  <SelectItem value="Paquete C">Paquete C — Esencial</SelectItem>
+                  <SelectItem value="Paquete Legendario">Paquete Legendario — Premium</SelectItem>
+                  <SelectItem value="Paquete Épico">Paquete Épico — Más Popular</SelectItem>
+                  <SelectItem value="Paquete Recluta">Paquete Recluta — Esencial</SelectItem>
                   <SelectItem value="No estoy seguro">Aún no estoy seguro</SelectItem>
                 </SelectContent>
               </Select>
