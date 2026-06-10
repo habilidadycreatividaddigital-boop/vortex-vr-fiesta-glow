@@ -53,6 +53,8 @@ const ReservationForm = () => {
       `🎂 Niño/a: ${d.childName} (${d.age} años)\n` +
       `📅 Fecha preferida: ${d.date}\n` +
       `🎁 Paquete: ${d.pkg}\n` +
+      `📞 Teléfono: ${d.phone}\n` +
+      `✉️ Correo: ${d.email}\n` +
       (d.guests ? `👥 Invitados aprox.: ${d.guests}\n` : "") +
       (d.notes ? `📝 Notas: ${d.notes}\n` : "") +
       `\n¿Me ayudan con disponibilidad? ¡Gracias!`;
