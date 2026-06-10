@@ -375,7 +375,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-background/80" />
             <div className="absolute inset-0 bg-gradient-glow animate-pulse-glow" />
             <div className="relative z-10 max-w-3xl mx-auto">
-              <img src={logoWide.url} alt="Vortex VR Place" className="h-16 md:h-20 w-auto mx-auto mb-6" loading="lazy" />
+              <img src={logoWide.url} alt="Vortex VR Place" className="h-28 md:h-40 w-auto mx-auto mb-6 drop-shadow-[0_0_30px_hsl(var(--neon-cyan)/0.45)]" loading="lazy" />
               <h2 className="font-display text-4xl md:text-7xl font-black mb-6 neon-text">
                 Agenda tu fecha <span className="text-gradient-neon">hoy</span>
               </h2>
