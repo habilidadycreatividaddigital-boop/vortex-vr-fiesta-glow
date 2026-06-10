@@ -8,6 +8,9 @@ import logoWide from "@/assets/vortex-logo-wide.png.asset.json";
 import gamingRoom from "@/assets/vortex-gaming-room.png.asset.json";
 import vrKids from "@/assets/vortex-vr-kids.png.asset.json";
 import partyGroup from "@/assets/vortex-party-group.jpg.asset.json";
+import bannerLegendario from "@/assets/paquete-legendario.png.asset.json";
+import bannerEpico from "@/assets/paquete-epico.png.asset.json";
+import bannerRecluta from "@/assets/paquete-recluta.png.asset.json";
 import ParticleField from "@/components/ParticleField";
 import SparkleField from "@/components/Sparkles";
 import Gallery from "@/components/Gallery";
@@ -17,9 +20,35 @@ const WHATSAPP = "https://wa.me/526441345735?text=Hola%20Vortex%2C%20quiero%20re
 
 const packages = [
   {
-    name: "Paquete A",
-    tag: "Completo",
-    popular: false,
+    name: "Paquete Recluta",
+    subtitle: "Tu primera misión comienza aquí.",
+    badge: "🎮 INICIO",
+    tier: "recluta" as const,
+    banner: bannerRecluta.url,
+    features: [
+      { icon: Gamepad2, text: "Sala de videojuegos y realidad virtual" },
+      { icon: Clock, text: "3 horas de evento" },
+    ],
+  },
+  {
+    name: "Paquete Épico",
+    subtitle: "Más tiempo. Más diversión. Más experiencia.",
+    badge: "⭐ MÁS POPULAR",
+    tier: "epico" as const,
+    banner: bannerEpico.url,
+    features: [
+      { icon: Gamepad2, text: "Sala de videojuegos y realidad virtual" },
+      { icon: Droplets, text: "Agua incluida" },
+      { icon: Mail, text: "Invitación digital Vortex" },
+      { icon: Clock, text: "4 horas de evento" },
+    ],
+  },
+  {
+    name: "Paquete Legendario",
+    subtitle: "La experiencia definitiva Vortex.",
+    badge: "👑 MÁS COMPLETO",
+    tier: "legendario" as const,
+    banner: bannerLegendario.url,
     features: [
       { icon: Gamepad2, text: "Sala de videojuegos y realidad virtual" },
       { icon: Pizza, text: "104 rebanadas de pizza" },
@@ -29,27 +58,40 @@ const packages = [
       { icon: Clock, text: "4 horas de evento" },
     ],
   },
-  {
-    name: "Paquete B",
-    tag: "Más Popular",
-    popular: true,
-    features: [
-      { icon: Gamepad2, text: "Sala de videojuegos y realidad virtual" },
-      { icon: Droplets, text: "Agua incluida" },
-      { icon: Mail, text: "Invitación digital Vortex" },
-      { icon: Clock, text: "4 horas de evento" },
-    ],
-  },
-  {
-    name: "Paquete C",
-    tag: "Esencial",
-    popular: false,
-    features: [
-      { icon: Gamepad2, text: "Sala de videojuegos y realidad virtual" },
-      { icon: Clock, text: "3 horas de evento" },
-    ],
-  },
 ];
+
+const tierStyles = {
+  recluta: {
+    card: "border-neon-blue/40 hover:border-neon-blue/70",
+    glow: "shadow-[0_0_40px_-10px_hsl(var(--neon-blue)/0.4)]",
+    tagText: "text-neon-blue",
+    iconBg: "bg-neon-blue/15 border-neon-blue/40",
+    iconColor: "text-neon-blue",
+    title: "text-neon-blue",
+    badgeBg: "bg-neon-blue/90 text-background",
+    button: "bg-transparent border border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10",
+  },
+  epico: {
+    card: "md:scale-105 border-neon-purple/60 ring-2 ring-neon-purple/30",
+    glow: "shadow-[0_0_60px_-10px_hsl(var(--neon-purple)/0.55)]",
+    tagText: "text-neon-cyan",
+    iconBg: "bg-gradient-neon/20 border-neon-cyan/30",
+    iconColor: "text-neon-cyan",
+    title: "text-gradient-neon",
+    badgeBg: "bg-gradient-neon text-primary-foreground",
+    button: "bg-gradient-neon text-primary-foreground hover:scale-105",
+  },
+  legendario: {
+    card: "border-2 border-[#d4af37]/70 ring-2 ring-[#d4af37]/30 bg-gradient-to-br from-[#1a0d2e]/80 to-[#0d0420]/80",
+    glow: "shadow-[0_0_80px_-10px_rgba(212,175,55,0.6)]",
+    tagText: "text-[#f0d78c]",
+    iconBg: "bg-[#d4af37]/15 border-[#d4af37]/50",
+    iconColor: "text-[#f0d78c]",
+    title: "bg-gradient-to-r from-[#f5e6a8] via-[#d4af37] to-[#c9a84c] bg-clip-text text-transparent",
+    badgeBg: "bg-gradient-to-r from-[#d4af37] to-[#f0d78c] text-[#1a0d2e]",
+    button: "bg-gradient-to-r from-[#d4af37] via-[#f0d78c] to-[#d4af37] text-[#1a0d2e] hover:scale-105 font-bold",
+  },
+};
 
 const benefits = [
   { icon: Sparkles, title: "Experiencias Inmersivas", text: "Mundos virtuales que sorprenden a cada niño." },
@@ -99,7 +141,7 @@ const Index = () => {
           <img
             src={logoWide.url}
             alt="Vortex VR Place"
-            className="mx-auto mb-8 h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain animate-fade-up drop-shadow-[0_0_40px_hsl(var(--neon-purple)/0.35)]"
+            className="mx-auto mb-8 h-32 sm:h-40 md:h-52 lg:h-64 w-auto object-contain animate-fade-up drop-shadow-[0_0_40px_hsl(var(--neon-purple)/0.45)]"
           />
 
           <h1 className="font-display font-black text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 neon-text animate-fade-up">
@@ -169,53 +211,56 @@ const Index = () => {
           <div className="text-center mb-16">
             <span className="text-neon-purple font-display tracking-widest text-sm">PAQUETES</span>
             <h2 className="font-display text-4xl md:text-6xl font-bold mt-3 mb-4">
-              Elige tu <span className="text-gradient-neon">aventura</span>
+              Elige tu <span className="text-gradient-neon">nivel</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Diseñados para hacer de tu evento algo legendario.
+              Cada paquete desbloquea una experiencia diferente dentro de Vortex.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {packages.map((pkg) => (
-              <Card
-                key={pkg.name}
-                className={`relative glass-card neon-border-hover rounded-3xl p-8 flex flex-col ${
-                  pkg.popular ? "md:scale-105 border-neon-purple/60 ring-2 ring-neon-purple/30" : ""
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-neon px-4 py-1.5 rounded-full text-xs font-bold tracking-widest text-primary-foreground shadow-lg">
-                    ⭐ MÁS POPULAR
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+            {packages.map((pkg) => {
+              const s = tierStyles[pkg.tier];
+              return (
+                <Card
+                  key={pkg.name}
+                  className={`relative glass-card rounded-3xl overflow-hidden flex flex-col transition-all duration-300 ${s.card} ${s.glow}`}
+                >
+                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest shadow-lg whitespace-nowrap ${s.badgeBg}`}>
+                    {pkg.badge}
                   </div>
-                )}
-                <div className="mb-6">
-                  <div className="text-xs uppercase tracking-widest text-neon-cyan mb-2">{pkg.tag}</div>
-                  <h3 className="font-display text-3xl font-bold">{pkg.name}</h3>
-                </div>
-                <ul className="space-y-4 mb-8 flex-1">
-                  {pkg.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-0.5 p-1.5 rounded-lg bg-gradient-neon/20 border border-neon-cyan/30">
-                        <f.icon className="w-4 h-4 text-neon-cyan" />
-                      </span>
-                      <span className="text-sm text-foreground/90">{f.text}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    className={`w-full rounded-full py-6 font-bold ${
-                      pkg.popular
-                        ? "bg-gradient-neon text-primary-foreground hover:scale-105"
-                        : "bg-transparent border border-neon-cyan/40 text-neon-cyan hover:bg-neon-cyan/10"
-                    } transition-all`}
-                  >
-                    Apartar este paquete
-                  </Button>
-                </a>
-              </Card>
-            ))}
+                  <div className="relative w-full aspect-[16/7] overflow-hidden bg-background/40">
+                    <img
+                      src={pkg.banner}
+                      alt={pkg.name}
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="p-8 pt-6 flex flex-col flex-1">
+                    <div className="mb-6">
+                      <h3 className={`font-display text-3xl font-black tracking-wide ${s.title}`}>{pkg.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-2 italic">{pkg.subtitle}</p>
+                    </div>
+                    <ul className="space-y-4 mb-8 flex-1">
+                      {pkg.features.map((f, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className={`mt-0.5 p-1.5 rounded-lg border ${s.iconBg}`}>
+                            <f.icon className={`w-4 h-4 ${s.iconColor}`} />
+                          </span>
+                          <span className="text-sm text-foreground/90">{f.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                      <Button className={`w-full rounded-full py-6 font-bold transition-all ${s.button}`}>
+                        Apartar este paquete
+                      </Button>
+                    </a>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -330,7 +375,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-background/80" />
             <div className="absolute inset-0 bg-gradient-glow animate-pulse-glow" />
             <div className="relative z-10 max-w-3xl mx-auto">
-              <img src={logoWide.url} alt="Vortex VR Place" className="h-16 md:h-20 w-auto mx-auto mb-6" loading="lazy" />
+              <img src={logoWide.url} alt="Vortex VR Place" className="h-28 md:h-40 w-auto mx-auto mb-6 drop-shadow-[0_0_30px_hsl(var(--neon-cyan)/0.45)]" loading="lazy" />
               <h2 className="font-display text-4xl md:text-7xl font-black mb-6 neon-text">
                 Agenda tu fecha <span className="text-gradient-neon">hoy</span>
               </h2>
