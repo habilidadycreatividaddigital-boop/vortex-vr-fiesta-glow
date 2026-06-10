@@ -211,53 +211,56 @@ const Index = () => {
           <div className="text-center mb-16">
             <span className="text-neon-purple font-display tracking-widest text-sm">PAQUETES</span>
             <h2 className="font-display text-4xl md:text-6xl font-bold mt-3 mb-4">
-              Elige tu <span className="text-gradient-neon">aventura</span>
+              Elige tu <span className="text-gradient-neon">nivel</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Diseñados para hacer de tu evento algo legendario.
+              Cada paquete desbloquea una experiencia diferente dentro de Vortex.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {packages.map((pkg) => (
-              <Card
-                key={pkg.name}
-                className={`relative glass-card neon-border-hover rounded-3xl p-8 flex flex-col ${
-                  pkg.popular ? "md:scale-105 border-neon-purple/60 ring-2 ring-neon-purple/30" : ""
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-neon px-4 py-1.5 rounded-full text-xs font-bold tracking-widest text-primary-foreground shadow-lg">
-                    ⭐ MÁS POPULAR
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+            {packages.map((pkg) => {
+              const s = tierStyles[pkg.tier];
+              return (
+                <Card
+                  key={pkg.name}
+                  className={`relative glass-card rounded-3xl overflow-hidden flex flex-col transition-all duration-300 ${s.card} ${s.glow}`}
+                >
+                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest shadow-lg whitespace-nowrap ${s.badgeBg}`}>
+                    {pkg.badge}
                   </div>
-                )}
-                <div className="mb-6">
-                  <div className="text-xs uppercase tracking-widest text-neon-cyan mb-2">{pkg.tag}</div>
-                  <h3 className="font-display text-3xl font-bold">{pkg.name}</h3>
-                </div>
-                <ul className="space-y-4 mb-8 flex-1">
-                  {pkg.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-0.5 p-1.5 rounded-lg bg-gradient-neon/20 border border-neon-cyan/30">
-                        <f.icon className="w-4 h-4 text-neon-cyan" />
-                      </span>
-                      <span className="text-sm text-foreground/90">{f.text}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    className={`w-full rounded-full py-6 font-bold ${
-                      pkg.popular
-                        ? "bg-gradient-neon text-primary-foreground hover:scale-105"
-                        : "bg-transparent border border-neon-cyan/40 text-neon-cyan hover:bg-neon-cyan/10"
-                    } transition-all`}
-                  >
-                    Apartar este paquete
-                  </Button>
-                </a>
-              </Card>
-            ))}
+                  <div className="relative w-full aspect-[16/7] overflow-hidden bg-background/40">
+                    <img
+                      src={pkg.banner}
+                      alt={pkg.name}
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="p-8 pt-6 flex flex-col flex-1">
+                    <div className="mb-6">
+                      <h3 className={`font-display text-3xl font-black tracking-wide ${s.title}`}>{pkg.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-2 italic">{pkg.subtitle}</p>
+                    </div>
+                    <ul className="space-y-4 mb-8 flex-1">
+                      {pkg.features.map((f, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className={`mt-0.5 p-1.5 rounded-lg border ${s.iconBg}`}>
+                            <f.icon className={`w-4 h-4 ${s.iconColor}`} />
+                          </span>
+                          <span className="text-sm text-foreground/90">{f.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                      <Button className={`w-full rounded-full py-6 font-bold transition-all ${s.button}`}>
+                        Apartar este paquete
+                      </Button>
+                    </a>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
