@@ -141,7 +141,7 @@ const Index = () => {
           <img
             src={logoWide.url}
             alt="Vortex VR Place"
-            className="mx-auto mb-8 h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain animate-fade-up drop-shadow-[0_0_40px_hsl(var(--neon-purple)/0.35)]"
+            className="mx-auto mb-8 h-32 sm:h-40 md:h-52 lg:h-64 w-auto object-contain animate-fade-up drop-shadow-[0_0_40px_hsl(var(--neon-purple)/0.45)]"
           />
 
           <h1 className="font-display font-black text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 neon-text animate-fade-up">
