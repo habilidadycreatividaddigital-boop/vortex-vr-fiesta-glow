@@ -28,7 +28,9 @@ const ReservationForm = () => {
     childName: "",
     age: "" as string | number,
     date: "",
-    pkg: "Paquete B",
+    pkg: "Paquete Épico",
+    phone: "",
+    email: "",
     guests: "" as string | number,
     notes: "",
   });
