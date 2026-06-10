@@ -221,6 +221,9 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
             {packages.map((pkg) => {
               const s = tierStyles[pkg.tier];
+              const waUrl = `https://wa.me/526441345735?text=${encodeURIComponent(
+                `Hola Vortex 👋, quiero reservar el ${pkg.name}. ¿Me pueden compartir disponibilidad y precio?`
+              )}`;
               return (
                 <Card
                   key={pkg.name}
@@ -229,19 +232,16 @@ const Index = () => {
                   <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest shadow-lg whitespace-nowrap ${s.badgeBg}`}>
                     {pkg.badge}
                   </div>
-                  <div className="relative w-full aspect-[16/7] overflow-hidden bg-background/40">
+                  <div className="relative w-full h-56 md:h-60 overflow-hidden flex items-center justify-center bg-gradient-to-b from-background/60 to-background/20 px-2 pt-6">
                     <img
                       src={pkg.banner}
                       alt={pkg.name}
                       loading="lazy"
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(0,0,0,0.6)]"
                     />
                   </div>
-                  <div className="p-8 pt-6 flex flex-col flex-1">
-                    <div className="mb-6">
-                      <h3 className={`font-display text-3xl font-black tracking-wide ${s.title}`}>{pkg.name}</h3>
-                      <p className="text-sm text-muted-foreground mt-2 italic">{pkg.subtitle}</p>
-                    </div>
+                  <div className="p-8 pt-4 flex flex-col flex-1">
+                    <p className="text-sm text-center text-muted-foreground mb-6 italic">{pkg.subtitle}</p>
                     <ul className="space-y-4 mb-8 flex-1">
                       {pkg.features.map((f, i) => (
                         <li key={i} className="flex items-start gap-3">
@@ -252,9 +252,9 @@ const Index = () => {
                         </li>
                       ))}
                     </ul>
-                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                    <a href={waUrl} target="_blank" rel="noopener noreferrer">
                       <Button className={`w-full rounded-full py-6 font-bold transition-all ${s.button}`}>
-                        Apartar este paquete
+                        <MessageCircle className="mr-2 w-4 h-4" /> Apartar este paquete
                       </Button>
                     </a>
                   </div>
