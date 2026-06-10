@@ -134,9 +134,9 @@ const ReservationForm = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Paquete A">Paquete A — Completo</SelectItem>
-                  <SelectItem value="Paquete B">Paquete B — Más Popular</SelectItem>
-                  <SelectItem value="Paquete C">Paquete C — Esencial</SelectItem>
+                  <SelectItem value="Paquete Legendario">Paquete Legendario — Premium</SelectItem>
+                  <SelectItem value="Paquete Épico">Paquete Épico — Más Popular</SelectItem>
+                  <SelectItem value="Paquete Recluta">Paquete Recluta — Esencial</SelectItem>
                   <SelectItem value="No estoy seguro">Aún no estoy seguro</SelectItem>
                 </SelectContent>
               </Select>
