@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
-import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import gamingRoom from "@/assets/vortex-gaming-room.png.asset.json";
+import vrKids from "@/assets/vortex-vr-kids.png.asset.json";
+import pingpongVr from "@/assets/vortex-pingpong-vr.png.asset.json";
+import basketball from "@/assets/vortex-basketball.png.asset.json";
+import tetris from "@/assets/vortex-tetris.png.asset.json";
+import birthdayStage from "@/assets/vortex-birthday-stage.jpg.asset.json";
+import partyGroup from "@/assets/vortex-party-group.jpg.asset.json";
 
 type MediaItem = {
-  type: "image" | "video";
+  type: "image";
   src: string;
-  poster?: string;
   alt: string;
 };
 
 const items: MediaItem[] = [
-  { type: "image", src: g1, alt: "Niños con cascos VR riendo en Vortex" },
-  { type: "image", src: g2, alt: "Sala de arcade y videojuegos" },
-  { type: "image", src: g3, alt: "Pastel de cumpleaños neón" },
-  { type: "image", src: g4, alt: "Niño celebrando con casco VR" },
-  { type: "image", src: g5, alt: "Simulador de carreras con luces neón" },
-  { type: "image", src: g6, alt: "Interior del lounge gamer" },
+  { type: "image", src: gamingRoom.url, alt: "Niños jugando videojuegos en la sala principal de Vortex" },
+  { type: "image", src: vrKids.url, alt: "Niños disfrutando una experiencia de realidad virtual en Vortex" },
+  { type: "image", src: pingpongVr.url, alt: "Área de ping pong y zona VR durante una fiesta en Vortex" },
+  { type: "image", src: basketball.url, alt: "Canasta arcade para niños en Vortex VR Place" },
+  { type: "image", src: tetris.url, alt: "Juego gigante tipo Tetris en una fiesta infantil en Vortex" },
+  { type: "image", src: birthdayStage.url, alt: "Montaje de cumpleaños con decoración especial en Vortex" },
+  { type: "image", src: partyGroup.url, alt: "Grupo celebrando una fiesta en Vortex VR Place" },
 ];
 
 const Gallery = () => {
@@ -53,40 +54,32 @@ const Gallery = () => {
             Momentos <span className="text-gradient-neon">épicos</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Mira lo que viven los niños en cada fiesta Vortex.
+            Conoce el ambiente real de nuestras fiestas, juegos y experiencias dentro de Vortex.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 md:gap-4 max-w-6xl mx-auto">
           {items.map((item, i) => (
             <button
               key={i}
               onClick={() => setOpen(i)}
-              className={`group relative overflow-hidden rounded-2xl glass-card neon-border-hover aspect-square ${
-                i === 0 ? "md:col-span-2 md:row-span-2 md:aspect-auto" : ""
+              className={`group relative overflow-hidden rounded-2xl glass-card neon-border-hover ${
+                i === 0 ? "md:col-span-2 md:row-span-2" : i === 5 || i === 6 ? "md:col-span-2" : ""
               }`}
               aria-label={`Ver ${item.alt}`}
             >
               <img
-                src={item.type === "image" ? item.src : item.poster || ""}
+                src={item.src}
                 alt={item.alt}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-              {item.type === "video" && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="p-4 rounded-full bg-gradient-neon shadow-neon animate-pulse-glow">
-                    <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
-                  </div>
-                </div>
-              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent opacity-70 group-hover:opacity-35 transition-opacity" />
             </button>
           ))}
         </div>
       </div>
 
-      {/* LIGHTBOX */}
       {open !== null && (
         <div
           className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-4 animate-fade-in"
@@ -100,14 +93,20 @@ const Gallery = () => {
             <X className="w-5 h-5 text-neon-cyan" />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); prev(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
             className="absolute left-2 md:left-6 p-3 rounded-full glass-card hover:border-neon-cyan transition"
             aria-label="Anterior"
           >
             <ChevronLeft className="w-6 h-6 text-neon-cyan" />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); next(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
             className="absolute right-2 md:right-6 p-3 rounded-full glass-card hover:border-neon-cyan transition"
             aria-label="Siguiente"
           >
@@ -115,24 +114,14 @@ const Gallery = () => {
           </button>
 
           <div
-            className="relative max-w-5xl w-full max-h-[85vh] flex items-center justify-center"
+            className="relative max-w-6xl w-full max-h-[85vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {items[open].type === "image" ? (
-              <img
-                src={items[open].src}
-                alt={items[open].alt}
-                className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-neon"
-              />
-            ) : (
-              <video
-                src={items[open].src}
-                poster={items[open].poster}
-                controls
-                autoPlay
-                className="max-w-full max-h-[85vh] rounded-2xl shadow-neon"
-              />
-            )}
+            <img
+              src={items[open].src}
+              alt={items[open].alt}
+              className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-neon"
+            />
           </div>
         </div>
       )}

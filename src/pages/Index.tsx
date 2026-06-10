@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   Gamepad2, Sparkles, ShieldCheck, Cpu, MessageCircle, MapPin, Phone,
-  Pizza, GlassWater, Droplets, Mail, Clock, Star, Check
+  Pizza, GlassWater, Droplets, Mail, Clock, Star
 } from "lucide-react";
-import logo from "@/assets/vortex-logo.png";
-import vrImg from "@/assets/vr-experience.jpg";
-import vortexBg from "@/assets/vortex-bg.jpg";
-import felizDia from "@/assets/feliz-dia.png";
+import logoWide from "@/assets/vortex-logo-wide.png.asset.json";
+import gamingRoom from "@/assets/vortex-gaming-room.png.asset.json";
+import vrKids from "@/assets/vortex-vr-kids.png.asset.json";
+import partyGroup from "@/assets/vortex-party-group.jpg.asset.json";
 import ParticleField from "@/components/ParticleField";
 import SparkleField from "@/components/Sparkles";
 import Gallery from "@/components/Gallery";
@@ -70,38 +70,45 @@ const Index = () => {
       <SparkleField count={70} />
       <ParticleField />
 
-      {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-40 bg-cover bg-center"
-          style={{ backgroundImage: `url(${vortexBg})` }}
+          className="absolute inset-0 opacity-25 bg-cover bg-center"
+          style={{ backgroundImage: `url(${gamingRoom.url})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/72 to-background" />
         <div className="absolute inset-0 bg-gradient-glow opacity-60" />
 
-        {/* Header */}
         <header className="absolute top-0 inset-x-0 z-20 flex items-center justify-between p-4 md:p-6">
-          <div className="font-display font-black text-xl md:text-2xl text-gradient-neon tracking-widest">
-            VORTEX
-          </div>
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-neon-purple/40 blur-xl animate-pulse-glow" />
-            <img src={logo} alt="Vortex VR Place logo" className="relative h-14 w-14 md:h-16 md:w-16 rounded-full object-cover animate-spin-slow" />
-          </div>
+          <img
+            src={logoWide.url}
+            alt="Logo Vortex"
+            className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_20px_hsl(var(--neon-cyan)/0.45)]"
+          />
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+            <Button className="rounded-full bg-gradient-neon text-primary-foreground font-semibold px-5 py-5 hover:scale-105 transition-transform">
+              <MessageCircle className="mr-2" /> WhatsApp
+            </Button>
+          </a>
         </header>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center pt-20">
+        <div className="relative z-10 max-w-5xl mx-auto text-center pt-24">
           <span className="inline-block px-4 py-1.5 rounded-full glass-card text-xs md:text-sm font-medium tracking-widest text-neon-cyan mb-6 animate-fade-up">
             ⚡ CIUDAD OBREGÓN, SONORA
           </span>
+
+          <img
+            src={logoWide.url}
+            alt="Vortex VR Place"
+            className="mx-auto mb-8 h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain animate-fade-up drop-shadow-[0_0_40px_hsl(var(--neon-purple)/0.35)]"
+          />
+
           <h1 className="font-display font-black text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 neon-text animate-fade-up">
-            La mejor <span className="text-gradient-neon">fiesta</span>
-            <br />en Ciudad Obregón
+            Diversión fuera de este mundo
           </h1>
-          <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            Realidad virtual, videojuegos y experiencias inmersivas para niños.
+          <p className="text-lg md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            Explora nuevas realidades, desafía a tus amigos y vive una experiencia gamer única con VR, videojuegos y diversión interactiva.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-gradient-neon text-primary-foreground font-bold text-base md:text-lg px-8 py-6 rounded-full hover:scale-105 transition-all animate-pulse-glow">
                 <MessageCircle className="mr-2" /> Reservar ahora por WhatsApp
@@ -120,17 +127,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* EXPERIENCE */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative group">
             <div className="absolute -inset-2 bg-gradient-neon rounded-3xl opacity-50 blur-2xl group-hover:opacity-80 transition-opacity" />
             <img
-              src={vrImg}
+              src={vrKids.url}
               alt="Niños disfrutando realidad virtual en Vortex"
               loading="lazy"
-              width={1280}
-              height={832}
               className="relative rounded-3xl w-full h-auto object-cover"
             />
           </div>
@@ -141,14 +145,14 @@ const Index = () => {
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               En Vortex VR Place transformamos cada cumpleaños en un viaje épico.
-              Tus hijos y sus amigos vivirán batallas en otros planetas, carreras imposibles
-              y mundos mágicos sin salir de Ciudad Obregón.
+              Tus hijos y sus amigos vivirán retos, juegos, realidad virtual y momentos inolvidables
+              en un espacio diseñado para sorprenderlos de principio a fin.
             </p>
             <div className="grid grid-cols-3 gap-4">
               {[
-                { n: '+500', l: 'Fiestas' },
-                { n: '20+', l: 'Juegos VR' },
-                { n: '5★', l: 'Reseñas' },
+                { n: "+500", l: "Fiestas" },
+                { n: "20+", l: "Juegos VR" },
+                { n: "5★", l: "Reseñas" },
               ].map((s) => (
                 <div key={s.l} className="glass-card rounded-2xl p-4 text-center">
                   <div className="font-display text-2xl md:text-3xl font-bold text-gradient-neon">{s.n}</div>
@@ -160,7 +164,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* PACKAGES */}
       <section id="paquetes" className="relative py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -178,7 +181,7 @@ const Index = () => {
               <Card
                 key={pkg.name}
                 className={`relative glass-card neon-border-hover rounded-3xl p-8 flex flex-col ${
-                  pkg.popular ? 'md:scale-105 border-neon-purple/60 ring-2 ring-neon-purple/30' : ''
+                  pkg.popular ? "md:scale-105 border-neon-purple/60 ring-2 ring-neon-purple/30" : ""
                 }`}
               >
                 {pkg.popular && (
@@ -204,8 +207,8 @@ const Index = () => {
                   <Button
                     className={`w-full rounded-full py-6 font-bold ${
                       pkg.popular
-                        ? 'bg-gradient-neon text-primary-foreground hover:scale-105'
-                        : 'bg-transparent border border-neon-cyan/40 text-neon-cyan hover:bg-neon-cyan/10'
+                        ? "bg-gradient-neon text-primary-foreground hover:scale-105"
+                        : "bg-transparent border border-neon-cyan/40 text-neon-cyan hover:bg-neon-cyan/10"
                     } transition-all`}
                   >
                     Apartar este paquete
@@ -217,7 +220,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* BENEFITS */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -242,7 +244,6 @@ const Index = () => {
 
       <Gallery />
 
-      {/* TESTIMONIALS */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -272,7 +273,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* LOCATION */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto grid lg:grid-cols-2 gap-10 items-stretch">
           <div className="glass-card rounded-3xl p-8 md:p-10">
@@ -320,17 +320,17 @@ const Index = () => {
 
       <ReservationForm />
 
-      {/* FINAL CTA */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto">
           <div className="relative rounded-3xl overflow-hidden glass-card p-10 md:p-20 text-center">
             <div
-              className="absolute inset-0 opacity-30 bg-cover bg-center"
-              style={{ backgroundImage: `url(${vortexBg})` }}
+              className="absolute inset-0 opacity-25 bg-cover bg-center"
+              style={{ backgroundImage: `url(${partyGroup.url})` }}
             />
+            <div className="absolute inset-0 bg-background/80" />
             <div className="absolute inset-0 bg-gradient-glow animate-pulse-glow" />
             <div className="relative z-10 max-w-3xl mx-auto">
-              <img src={felizDia} alt="" className="w-32 mx-auto mb-6 animate-float opacity-90" loading="lazy" />
+              <img src={logoWide.url} alt="Vortex VR Place" className="h-16 md:h-20 w-auto mx-auto mb-6" loading="lazy" />
               <h2 className="font-display text-4xl md:text-7xl font-black mb-6 neon-text">
                 Agenda tu fecha <span className="text-gradient-neon">hoy</span>
               </h2>
@@ -347,12 +347,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="relative py-10 px-4 border-t border-neon-cyan/10">
         <div className="container mx-auto flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-muted-foreground">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="" className="h-8 w-8 rounded-full" />
-            <span className="font-display font-bold text-gradient-neon tracking-widest">VORTEX VR PLACE</span>
+            <img src={logoWide.url} alt="Vortex VR Place" className="h-8 w-auto object-contain" />
           </div>
           <div>© {new Date().getFullYear()} Vortex VR Place — Ciudad Obregón, Sonora</div>
         </div>
