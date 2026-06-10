@@ -14,7 +14,9 @@ const schema = z.object({
   childName: z.string().trim().min(1, "Ingresa el nombre del niño/a").max(80),
   age: z.coerce.number().int().min(1, "Edad inválida").max(18, "Edad inválida"),
   date: z.string().min(1, "Selecciona una fecha"),
-  pkg: z.enum(["Paquete A", "Paquete B", "Paquete C", "No estoy seguro"]),
+  pkg: z.enum(["Paquete Recluta", "Paquete Épico", "Paquete Legendario", "No estoy seguro"]),
+  phone: z.string().trim().min(7, "Teléfono inválido").max(20, "Teléfono demasiado largo"),
+  email: z.string().trim().email("Correo inválido").max(120),
   guests: z.coerce.number().int().min(1).max(200).optional(),
   notes: z.string().trim().max(300).optional(),
 });
